@@ -1,2 +1,4 @@
 # ANET-Collimator-model
-Simulation of the ANET collimator in python. 
+Programing work done during the PhD thesis. 
+
+https://zenodo.org/badge/327598141.svg
