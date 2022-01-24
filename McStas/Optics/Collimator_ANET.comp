@@ -1,0 +1,95 @@
+/*******************************************************************************
+*
+* McStas, neutron ray-tracing package
+*         Copyright 1997-2002, All rights reserved
+*         Risoe National Laboratory, Roskilde, Denmark
+*         Institut Laue Langevin, Grenoble, France
+*
+* Component: Collimator_ANET
+*
+* %I
+* Written by: Oriol Sans Planell
+* Date: August 2021
+* Origin: Torino
+* Modified by: 
+*
+* A simple ANET multichannel compact thermal neutron collimator.
+*
+* %D
+* Soller collimator with rectangular opening and specified length. The
+* transmission function is an average and does not utilize knowledge of the
+* actual neutron trajectory. A zero divergence disables collimation (then the
+* component works as a double slit).
+*
+* Example: Collimator_ANET(xmin=-0.025, xmax=0.025, ymin=-0.025, ymax=0.025, length=0.4, width=0.0025)
+*
+* %P
+* INPUT PARAMETERS:
+*
+* xmin: [m]                      Lower x bound on slits
+* xmax: [m]                      Upper x bound on slits
+* ymin: [m]                      Lower y bound on slits
+* ymax: [m]                      Upper y bound on slits
+* length: [m]                    Distance between input and output slits
+* width:[m]                      Width of the single collimation channel
+*
+* %E
+*******************************************************************************/
+
+
+DEFINE COMPONENT Collimator_ANET
+DEFINITION PARAMETERS ()
+SETTING PARAMETERS (xmin=-0.025, xmax=0.025, ymin=-0.025, ymax=0.025, length=0.4, width=0.0025)
+OUTPUT PARAMETERS ()
+/* Neutron parameters: (x,y,z,vx,vy,vz,t,sx,sy,sz,p) */
+DECLARE
+%{
+
+%}
+INITIALIZE
+%{
+
+%}
+TRACE
+%{
+    double dt,fx0,fy0,fx1,fy1;
+
+    PROP_Z0;
+    fx0 = floor((x-width*0.5)/width);
+    fy0 = floor((y-width*0.5)/width);
+    if (x<xmin || x>xmax || y<ymin || y>ymax)
+      ABSORB;
+    if (fmod(fx0,2) == 0 && fmod(fy0,2) != 0)
+      ABSORB;
+    if (fmod(fx0,2) != 0 && fmod(fy0,2) == 0)
+      ABSORB;
+
+    dt = length/vz;
+
+    PROP_DT(dt);
+
+    fx1 = floor((x-width*0.5)/width);
+    fy1 = floor((y-width*0.5)/width);
+
+    if (x<xmin || x>xmax || y<ymin || y>ymax || fx0 != fx1 || fy0 != fy1)
+      ABSORB;
+
+%}
+
+MCDISPLAY
+%{
+  double x;
+  int i;
+
+  
+  for(x = xmin, i = 0; i <= 3; i++, x += (xmax - xmin)/3.0)
+    multiline(5, x, (double)ymin, 0.0, x, (double)ymax, 0.0,
+              x, (double)ymax, (double)length, x, (double)ymin, (double)length,
+              x, (double)ymin, 0.0);
+  line(xmin, ymin, 0,   xmax, ymin, 0);
+  line(xmin, ymax, 0,   xmax, ymax, 0);
+  line(xmin, ymin, length, xmax, ymin, length);
+  line(xmin, ymax, length, xmax, ymax, length);
+%}
+
+END

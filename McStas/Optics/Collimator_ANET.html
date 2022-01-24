@@ -1,0 +1,84 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML><HEAD>
+<TITLE>McStas: Collimator_ANET</TITLE>
+<LINK REV="made" HREF="mailto:pkwi@fysik.dtu.dk">
+</HEAD>
+
+<BODY>
+
+<P ALIGN=CENTER>
+ [ <A href="#id">Identification</A>
+ | <A href="#desc">Description</A>
+ | <A href="#ipar">Input parameters</A>
+ | <A href="#opar">Output parameters</A>
+ | <A href="#links">Links</A> ]
+</P>
+
+<H1>The <CODE>Collimator_ANET</CODE> Component</H1>
+
+A simple analytical Soller collimator (with triangular transmission).
+
+<H2><A NAME=id></A>Identification</H2>
+
+<UL>
+  <LI> <B>Site: </B>
+  <LI> <B>Author: </B>Kristian Nielsen
+  <LI> <B>Origin: </B>Risoe
+  <LI> <B>Date: </B>August 1998
+</UL>
+<H2><A NAME=desc></A>Description</H2>
+
+<PRE>
+Soller collimator with rectangular opening and specified length. The
+transmission function is an average and does not utilize knowledge of the
+actual neutron trajectory. A zero divergence disables collimation (then the
+component works as a double slit).
+
+Example: Collimator_ANET(xmin=-0.025, xmax=0.025, ymin=-0.025, ymax=0.025, length=0.4, width=0.0025)
+</PRE>
+
+<H2><A NAME=ipar></A>Input parameters</H2>
+Parameters in <B>boldface</B> are required;
+the others are optional.
+
+<TABLE BORDER=1>
+<TR> <TD><strong>Name</strong></TD><TD><strong>Unit</strong></TD><TD><strong>Description</strong></TD><TD ALIGN=RIGHT><strong>Default</strong></TD></TR>
+
+<TR> <TD>xmin</TD><TD>m</TD><TD>Lower x bound on slits</TD><TD ALIGN=RIGHT>-0.025</TD></TR>
+<TR> <TD>xmax</TD><TD>m</TD><TD>Upper x bound on slits</TD><TD ALIGN=RIGHT>0.025</TD></TR>
+<TR> <TD>ymin</TD><TD>m</TD><TD>Lower y bound on slits</TD><TD ALIGN=RIGHT>-0.025</TD></TR>
+<TR> <TD>ymax</TD><TD>m</TD><TD>Upper y bound on slits</TD><TD ALIGN=RIGHT>0.025</TD></TR>
+<TR> <TD>length</TD><TD>m</TD><TD>Distance between input and output slits</TD><TD ALIGN=RIGHT>0.4</TD></TR>
+<TR> <TD>width</TD><TD>minutes of arc</TD><TD>Divergence horizontal angle (calculated as atan(d/length), where d is the blade spacing)</TD><TD ALIGN=RIGHT>0.0025</TD></TR>
+
+</TABLE>
+
+<H2><A NAME=ipar></A>Output parameters</H2>
+Parameters in <B>boldface</B> are required;
+the others are optional.
+
+<TABLE BORDER=1>
+<TR> <TD><strong>Name</strong></TD><TD><strong>Unit</strong></TD><TD><strong>Description</strong></TD><TD ALIGN=RIGHT><strong>Default</strong></TD></TR>
+
+</TABLE>
+
+<H2><A NAME=links></A>Links</H2>
+
+<UL>
+  <LI> <A HREF="/Applications/McStas-2.7.app/Contents/Resources/mcstas/2.7/optics/Collimator_ANET.comp">Source code</A> for <CODE>Collimator_ANET.comp</CODE>.
+  
+</UL>
+<HR>
+<P ALIGN=CENTER>
+ [ <A href="#id">Identification</A>
+ | <A href="#desc">Description</A>
+ | <A href="#ipar">Input parameters</A>
+ | <A href="#opar">Output parameters</A>
+ | <A href="#links">Links</A> ]
+</P>
+
+<ADDRESS>
+Generated on 2020-11-27 12:36:34
+</ADDRESS>
+</BODY></HTML>

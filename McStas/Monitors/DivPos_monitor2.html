@@ -1,0 +1,95 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML><HEAD>
+<TITLE>McStas: DivPos_monitor2</TITLE>
+<LINK REV="made" HREF="mailto:pkwi@fysik.dtu.dk">
+</HEAD>
+
+<BODY>
+
+<P ALIGN=CENTER>
+ [ <A href="#id">Identification</A>
+ | <A href="#desc">Description</A>
+ | <A href="#ipar">Input parameters</A>
+ | <A href="#opar">Output parameters</A>
+ | <A href="#links">Links</A> ]
+</P>
+
+<H1>The <CODE>DivPos_monitor2</CODE> Component</H1>
+
+Divergence/position monitor2 (acceptance diagram).
+
+<H2><A NAME=id></A>Identification</H2>
+
+<UL>
+  <LI> <B>Site: </B>
+  <LI> <B>Author: </B>Kristian Nielsen
+  <LI> <B>Origin: </B>Risoe
+  <LI> <B>Date: </B>1999
+</UL>
+<H2><A NAME=desc></A>Description</H2>
+
+<PRE>
+2D detector for intensity as a function of both horizontal position
+and wavelength. This gives information similar to an aceptance diagram used
+eg. to investigate beam profiles in neutron guides.
+
+Example: DivPos_monitor2(nh=20, ndiv=20, filename="Output.dip",
+xmin=-0.1, xmax=0.1, ymin=-0.1, ymax=0.1, maxdiv_h=2)
+</PRE>
+
+<H2><A NAME=ipar></A>Input parameters</H2>
+Parameters in <B>boldface</B> are required;
+the others are optional.
+
+<TABLE BORDER=1>
+<TR> <TD><strong>Name</strong></TD><TD><strong>Unit</strong></TD><TD><strong>Description</strong></TD><TD ALIGN=RIGHT><strong>Default</strong></TD></TR>
+
+<TR> <TD>nh</TD><TD>1</TD><TD>Number of bins in position</TD><TD ALIGN=RIGHT>20</TD></TR>
+<TR> <TD>ndiv</TD><TD>1</TD><TD>Number of bins in divergence</TD><TD ALIGN=RIGHT>20</TD></TR>
+<TR> <TD>filename</TD><TD>string</TD><TD>Name of file in which to store the detector image</TD><TD ALIGN=RIGHT>0</TD></TR>
+<TR> <TD>xmin</TD><TD>m</TD><TD>Lower x bound of detector opening</TD><TD ALIGN=RIGHT>-0.05</TD></TR>
+<TR> <TD>xmax</TD><TD>m</TD><TD>Upper x bound of detector opening</TD><TD ALIGN=RIGHT>0.05</TD></TR>
+<TR> <TD>ymin</TD><TD>m</TD><TD>Lower y bound of detector opening</TD><TD ALIGN=RIGHT>-0.05</TD></TR>
+<TR> <TD>ymax</TD><TD>m</TD><TD>Upper y bound of detector opening</TD><TD ALIGN=RIGHT>0.05</TD></TR>
+<TR> <TD>xwidth</TD><TD>m</TD><TD>Width of detector. Overrides xmin,xmax.</TD><TD ALIGN=RIGHT>0</TD></TR>
+<TR> <TD>yheight</TD><TD>m</TD><TD>Height of detector. Overrides ymin,ymax.</TD><TD ALIGN=RIGHT>0</TD></TR>
+<TR> <TD>maxdiv_h</TD><TD>degrees</TD><TD>Maximal horizontal divergence detected</TD><TD ALIGN=RIGHT>2</TD></TR>
+<TR> <TD>restore_neutron</TD><TD>1</TD><TD>If set, the monitor does not influence the neutron state</TD><TD ALIGN=RIGHT>0</TD></TR>
+<TR> <TD>nx</TD><TD>1</TD><TD></TD><TD ALIGN=RIGHT>0</TD></TR>
+<TR> <TD>ny</TD><TD>1</TD><TD>Vector definition of "forward" direction wrt. divergence, to be used e.g. when the monitor is rotated into the horizontal plane</TD><TD ALIGN=RIGHT>0</TD></TR>
+<TR> <TD>nz</TD><TD>1</TD><TD></TD><TD ALIGN=RIGHT>1</TD></TR>
+<TR> <TD>nowritefile</TD><TD>1</TD><TD>If set, monitor will skip writing to disk</TD><TD ALIGN=RIGHT>0</TD></TR>
+</TABLE>
+
+<H2><A NAME=ipar></A>Output parameters</H2>
+Parameters in <B>boldface</B> are required;
+the others are optional.
+
+<TABLE BORDER=1>
+<TR> <TD><strong>Name</strong></TD><TD><strong>Unit</strong></TD><TD><strong>Description</strong></TD><TD ALIGN=RIGHT><strong>Default</strong></TD></TR>
+
+<TR> <TD><strong>Div_N</strong></TD><TD></TD><TD>Array of neutron counts</TD><TD ALIGN=RIGHT></TD></TR>
+<TR> <TD><strong>Div_p</strong></TD><TD></TD><TD>Array of neutron weight counts</TD><TD ALIGN=RIGHT></TD></TR>
+<TR> <TD><strong>Div_p2</strong></TD><TD></TD><TD>Array of second moments</TD><TD ALIGN=RIGHT></TD></TR>
+</TABLE>
+
+<H2><A NAME=links></A>Links</H2>
+
+<UL>
+  <LI> <A HREF="/Applications/McStas-2.7.app/Contents/Resources/mcstas/2.7/monitors/DivPos_monitor.comp">Source code</A> for <CODE>DivPos_monitor.comp</CODE>.
+  
+</UL>
+<HR>
+<P ALIGN=CENTER>
+ [ <A href="#id">Identification</A>
+ | <A href="#desc">Description</A>
+ | <A href="#ipar">Input parameters</A>
+ | <A href="#opar">Output parameters</A>
+ | <A href="#links">Links</A> ]
+</P>
+
+<ADDRESS>
+Generated on 2020-11-27 12:36:34
+</ADDRESS>
+</BODY></HTML>
